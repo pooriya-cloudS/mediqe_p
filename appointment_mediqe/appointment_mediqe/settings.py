@@ -92,8 +92,8 @@ DATABASES = {
 # configuration of django redis into this project
 CACHES = {
     "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/1",
+        "BACKEND": os.environ.get("REDIS_BACKEND"),
+        "LOCATION": os.environ.get("REDIS_URL"),
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         },
@@ -166,13 +166,12 @@ SIMPLE_JWT = {
     "TOKEN_BLACKLIST_ENABLED": True, # enable token blacklisting
 }
 
-
+# todo: add these configs to env file
 # celery settings for config
-CELERY_BROKER_URL = "redis://127.0.0.1:6379/1"
-CELERY_RESULT_BACKEND = "redis://127.0.0.1:6379/1"
-CELERY_RESULT_EXPIRES = 60  # results auto-expire
-CELERY_IGNORE_RESULT = True 
-CELERY_RESULT_BACKEND = None
+CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL")
+CELERY_RESULT_BACKEND = os.environ.get("CELERY_RESULT_BACKEND")
+CELERY_RESULT_EXPIRES = os.environ.get("CELERY_RESULT_EXPIRES")  # results auto-expire after the env file timeout
+CELERY_IGNORE_RESULT = os.environ.get("CELERY_IGNORE_RESULT")
 
 # Internationalization
 LANGUAGE_CODE = "en-us"

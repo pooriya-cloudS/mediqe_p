@@ -22,6 +22,7 @@ urlpatterns = [
     ),
     path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
     path("api/v1/accounts/", include("accounts.v1.urls")),
+    path("api/v1/health/", include("healthdatas.v1.urls")),
 ]
 
 # add static file serving just for debug True
