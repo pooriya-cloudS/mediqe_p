@@ -166,7 +166,6 @@ SIMPLE_JWT = {
     "TOKEN_BLACKLIST_ENABLED": True, # enable token blacklisting
 }
 
-# todo: add these configs to env file
 # celery settings for config
 CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL")
 CELERY_RESULT_BACKEND = os.environ.get("CELERY_RESULT_BACKEND")
